@@ -34,7 +34,7 @@ void solve()
 
     for (auto character : s)
     {
-        if (charSet.find(character) != charSet.end())
+        if (charSet.find(character) == charSet.end())
         {
             cout << character;
         }
