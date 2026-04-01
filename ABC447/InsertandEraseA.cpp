@@ -1,43 +1,36 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
-pair<string, vector<int>> decomposition(const string &s) {
-    string t = "";
+pair<string, vector<int>> decompose(const string &s) {
+    string t;
     vector<int> v;
-    int count = 0;
-    for (char c : s) {
+    int cnt = 0;
+    for (char c: s) {
         if (c == 'A') {
-            count++;
+            ++cnt;
         } else {
             t += c;
-            v.push_back(count);
-            count = 0;
+            v.push_back(cnt);
+            cnt = 0;
         }
     }
-    v.push_back(count);
+    v.push_back(cnt);
+    return {t, v};
 }
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
-
     string s, t;
-    if (!(cin >> s >> t)) return 0;
-
-    auto [ss, sv] = decomposition(s);
-    auto [ts, tv] = decomposition(t);
-
-    if (ss != ts || sv.size() != tv.size()) {
-        cout << -1 << "\n";
+    cin >> s >> t;
+    auto [ss, sv] = decompose(s);
+    auto [ts, tv] = decompose(t);
+    if (ss != ts) {
+        cout << -1 << endl;
         return 0;
     }
-
-    long long ans = 0; 
-    for (int i = 0; i < (int)sv.size(); i++) {
+    int ans = 0;
+    for (int i = 0; i < (int) sv.size(); i++) {
         ans += abs(sv[i] - tv[i]);
     }
-    
-    cout << ans << "\n";
-
-    return 0;
+    cout << ans << endl;
 }
