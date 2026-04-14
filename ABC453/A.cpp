@@ -12,7 +12,7 @@ void solve()
     {
         s.erase(s.begin());
     }
-    cout << s << "\n";
+    // cout << s << "\n";
 }
 
 int main()
